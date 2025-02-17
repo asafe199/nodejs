@@ -1,19 +1,22 @@
 const express = require('express');
+const { logger } = require("./lib/common/pino-logger")
+
 const app = express();
 const port = process.env.EXPRESS_PORT || 3000;
 app.use(express.json());
 
 app.use((req, res, next) => {
-    console.log(`URL : ${req.url}, Timestamp: ${Date.now()}`)
+    logger.info(`URL : ${req.url}, Timestamp: ${Date.now()}`)
     next()
 })
 
 app.use('/notification', require('./controller/notification-controller'));
+app.use('/email', require('./controller/mail-controller'));
 
 app.get('/', (req, res) => {
-    res.send({"msg": "Hello World"});
+    res.status(200);
 })
 
 app.listen(port, ()=> {
-    console.log(`Running on Port ${port}`);
+    logger.info(`Running on Port ${port}`);
 })
