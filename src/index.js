@@ -14,7 +14,7 @@ app.use('/notification', require('./controller/notification-controller'));
 app.use('/email', require('./controller/mail-controller'));
 
 app.get('/', (req, res) => {
-    res.status(200);
+    res.status(200).send({});
 })
 
 app.listen(port, ()=> {

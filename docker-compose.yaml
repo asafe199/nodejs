@@ -26,6 +26,7 @@ services:
 
   mongo-express:
     image: mongo-express
+    container_name: mongo-express
     restart: always
     depends_on:
       - mongodb
@@ -39,6 +40,23 @@ services:
       - ME_CONFIG_MONGODB_URL=mongodb://${MONGO_USERNAME}:${MONGO_PASSWORD}@mongodb:27017/
       - ME_CONFIG_BASICAUTH=false
 
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nodejs
+    profiles:
+      - prod
+    ports:
+      - ${EXPRESS_PORT}:${EXPRESS_PORT}
+    volumes:
+      - .:/app
+    depends_on:
+      - rabbitmq
+      - mongodb
+    env_file:
+      - .env.dev
+      - .env
 
 volumes:
   rabbitmq_data:

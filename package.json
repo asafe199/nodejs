@@ -7,10 +7,12 @@
     "node": ">=21.0.0"
   },
   "scripts": {
-    "start": "node --env-file=.env src/index.js",
-    "watch": "node --watch --env-file=.env src/index.js",
+    "start": "node --env-file=.env.dev src/index.js",
+    "watch": "node --watch --env-file=.env.dev src/index.js",
+    "prod": "node --watch --env-file=.env src/index.js",
     "up": "docker-compose up -d",
-    "down": "docker-compose down"
+    "down": "docker-compose down",
+    "up-prod": "docker-compose --profile prod up -d"
   },
   "keywords": [
     "microservices",
