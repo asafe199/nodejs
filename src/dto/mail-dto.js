@@ -3,7 +3,7 @@ class MailDto {
         this.from = from;
         this.to = to;
         this.subject = subject;
-        this.text = text;
+        this.html = text;
     }
 
     get toJSON(){
@@ -11,7 +11,7 @@ class MailDto {
             from: this.from,
             to: this.to,
             subject: this.subject,
-            text: this.text
+            html: this.html
         };
     }
 }
