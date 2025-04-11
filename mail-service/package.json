@@ -1,0 +1,16 @@
+{
+  "name": "mail-service",
+  "version": "1.0.0",
+  "description": "mail service",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --env-file=.env.dev src/index.js",
+    "watch": "node --watch --env-file=.env.dev src/index.js",
+    "prod": "node --watch --env-file=.env src/index.js",
+    "up": "docker-compose up -d",
+    "down": "docker-compose down",
+    "up-prod": "docker-compose --profile prod up -d"
+  },
+  "author": "",
+  "license": "ISC"
+}

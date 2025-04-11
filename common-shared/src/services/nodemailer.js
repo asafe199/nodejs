@@ -1,13 +1,13 @@
-const nodemailer = require('nodemailer');
-const { logger } = require('./pino-logger')
+const nodemailer = require('common-shared/src/services/nodemailer');
+const { logger } = require('../../../core-service/src/lib/common/pino-logger')
 
 class Nodemailer {
 
     #transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-            user: '',
-            pass: ''
+            user: 'asafe.adm@gmail.com',
+            pass: 'ssecvfrdsowaqpoe'
         }
     })
 

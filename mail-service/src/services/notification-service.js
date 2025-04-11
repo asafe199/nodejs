@@ -1,5 +1,5 @@
-const RabbitMQ = require('../lib/common/rabbitmq');
-const { logger } = require('../lib/common/pino-logger')
+const RabbitMQ = require('../../../common-shared/src/services/rabbitmq');
+const { logger } = require('../../../core-service/src/lib/common/pino-logger')
 class NotificationService {
 
     constructor() {

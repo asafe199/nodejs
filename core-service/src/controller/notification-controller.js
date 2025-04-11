@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 const NotificationDTOInstance = require('../dto/notification-dto')
-const NotificationInstance  = require('../services/notification-service')
+const NotificationInstance  = require('../../../mail-service/src/services/notification-service')
 
 const Notification = new NotificationInstance()
 const NotificationDTO= new NotificationDTOInstance()

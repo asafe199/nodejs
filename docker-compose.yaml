@@ -2,7 +2,7 @@ services:
   rabbitmq:
     container_name: rabbitmq
     env_file:
-      - .env
+      - core-service/.env
     image: rabbitmq:3-management-alpine
     ports:
       - '5672:5672'
@@ -15,7 +15,7 @@ services:
     image: mongo
     restart: always
     env_file:
-      - .env
+      - core-service/.env
     environment:
       - MONGO_INITDB_ROOT_USERNAME=${MONGO_USERNAME}
       - MONGO_INITDB_ROOT_PASSWORD=${MONGO_PASSWORD}
@@ -31,7 +31,7 @@ services:
     depends_on:
       - mongodb
     env_file:
-      - .env
+      - core-service/.env
     ports:
       - '8081:8081'
     environment:
@@ -42,9 +42,9 @@ services:
 
   app:
     build:
-      context: .
+      context: ./core-service
       dockerfile: Dockerfile
-    container_name: nodejs
+    container_name: core
     profiles:
       - prod
     ports:
@@ -55,8 +55,8 @@ services:
       - rabbitmq
       - mongodb
     env_file:
-      - .env.dev
-      - .env
+      - ./core-service/.env.dev
+      - ./core-service/.env
 
 volumes:
   rabbitmq_data:

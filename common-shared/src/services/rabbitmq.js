@@ -1,6 +1,6 @@
 const amqp = require('amqplib/callback_api');
 const processQueue = process.env.RABBITMQ_QUEUE;
-const { logger } = require('./pino-logger')
+const { logger } = require('../../../core-service/src/lib/common/pino-logger')
 
 class Rabbitmq {
 
